@@ -3,7 +3,40 @@ var mongoose = require('../../libs/mongoose');
 var Schema = mongoose.Schema;
 
 var ShowShema = new Schema({
-    title: String
+  started: {
+    type: String
+  },
+  ended: {
+    type: String
+  },
+  nameEN: {
+    type: String
+  },
+  nameRU: {
+    type: String
+  },
+  seasons: {
+    type: String
+  },
+  status: {
+    type: String
+  },
+  genres: {
+    type: [String]
+  },
+  country: {
+    type: String
+  },
+  showId: {
+    type: String
+  },
+  imageUrl: {
+    type: String
+  },
+  description: {
+    type: String
+  }
+
 });
 
 ShowShema.set('toJSON', {transform: mongoose.dtoTransform});
