@@ -1,0 +1,35 @@
+{
+  "development": {
+    "defaultPort": 3000,
+    "title": "Shows",
+    "mongoose": {
+      "uri": "mongodb://localhost/test",
+      "options": {
+        "server": {
+          "socketOptions": {
+            "keepAlive": 1
+          }
+        }
+      }
+    }
+  },
+
+
+  "test": {
+    "defaultPort": 3000,
+    "cinemahdFirstCount": 3,
+    "title": "Shows",
+    "minRating": 7,
+    "minVotes": 3000,
+    "minYear": 2012,
+    "mongoose": {
+      "options": {
+        "server": {
+          "socketOptions": {
+            "keepAlive": 1
+          }
+        }
+      }
+    }
+  }
+}
