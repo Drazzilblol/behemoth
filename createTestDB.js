@@ -22,7 +22,17 @@ function createRecords(callback) {
   var testRecords = [
     {
       "nameEN": "Buffy the Vampire Slayer",
-      "nameRU": "Баффи – истребительница вампиров"
+      "nameRU": "Баффи – истребительница вампиров",
+      "seasons": "7",
+      "status": "Ended",
+      "showId": "2930"
+    },
+    {
+      "nameEN": "How I Met Your Mother",
+      "nameRU": "Как я встретил вашу маму",
+      "seasons": "9",
+      "status": "Ended",
+      "showId": "3918"
     }
   ]
 
