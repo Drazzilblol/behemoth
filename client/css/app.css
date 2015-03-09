@@ -4,6 +4,10 @@ body {
   padding-top: 20px;
 }
 
+a {
+    color: #191919;
+    text-decoration: none;
+}
 
 .phone-images {
   background-color: white;
@@ -96,4 +100,125 @@ ul.specs dt {
 
 h1 {
   border-bottom: 1px solid gray;
+}
+
+.serial {
+    float: left;
+    list-style: outside none none;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.serial > li {
+    float: left;
+    height: 310px;
+    margin-right: 11px;
+    margin-top: 15px;
+    width: 160px;
+}
+
+.serial > li > .prev_img {
+    float: left;
+}
+.serial > li > .show_info {
+    float: left;
+    margin-top: 5px;
+    width: 100%;
+}
+.serial > li > .show_info > a {
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    width: 100%;
+}
+.serial > li > .show_info > span {
+    float: left;
+    font-size: 9px;
+    width: 100%;
+}
+
+.serial .position, .cat_prev > div > li > .position, .fullresult_search .position {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+background-color: #efefef;
+border-color: #e0e0e0 #e0e0e0 -moz-use-text-color;
+border-image: none;
+border-style: solid solid none;
+border-width: 2px 2px medium;
+color: #151515;
+float: left;
+font-size: 11px;
+padding: 2px 0;
+text-align: center;
+width: 100%;
+}
+
+
+#home {
+    margin-top: 12px;
+    text-align: center;
+}
+
+#home .show {
+    display: inline-block;
+    margin: 10px;
+    position: relative;
+    vertical-align: top;
+    width: 210px;
+
+    float: left;
+    list-style: outside none none;
+
+}
+
+
+#home .show a.show_block {
+    display: block;
+    text-decoration: none;
+}
+
+#home .show a.show_block .info .show-info {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 2px;
+    color: white;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    height: 280px;
+    left: 0;
+    opacity: 0;transition:opacity 1s;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 210px;
+
+}
+#home .show a.show_block .info .show-info:hover { opacity: 1; }
+
+#home .show a.show_block .show-info .info {
+    font-size: 12px;
+    padding: 5px 9px 0;
+    text-align: left;
+}
+
+#home .show a.show_block .show-info .desc {
+    float: left;
+    font-style: italic;
+    padding-top: 5px;
+}
+
+#home .show a.show_block .show-info .info span.cam {
+    float: left;
+}
+
+#home .show a.show_block .show-info .info span.value {
+    font-weight: bold;
+}
+
+#home .show a.show_block .show-info .info span.star {
+    float: right;
+}
+
+#home .show a.show_block .show-info .info span.value {
+    font-weight: bold;
 }

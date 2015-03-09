@@ -1,30 +1,42 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-2">
-      <!--Sidebar content-->
-
-      Search: <input ng-model="query">
-      Sort by:
-      <select ng-model="orderProp">
-        <option value="name">Alphabetical</option>
-        <option value="age">Newest</option>
-      </select>
-
-    </div>
-    <div class="col-md-10">
+    <div class="col-md-12">
       <!--Body content-->
 
-      <ul class="phones">
-        <li ng-repeat="show in shows | filter:query | orderBy:orderProp"
-            class="thumbnail phone-listing">
-          <a href="#/shows/{{show.id}}" class="thumb"><img ng-src="{{show.imageUrl}}"></a>
-          <a href="#/shows/{{show.id}}">{{show.nameEN}}</a>
-          <span>{{show.nameRU}}</span>
-          <span>{{show.seasons}}</span>
-          <span>{{show.status}}</span>
-        </li>
-      </ul>
-
+      <div id="home">
+        <div class="mainline">
+          <div class="shows">
+            <div ng-repeat="show in shows | filter:query | orderBy:orderProp" class="index show" data-info="Drama Horror Thriller usa">
+              <a  class="show_block " href="#/shows/{{show.showId}}">
+                <img class="lazy" width="210" height="280" alt="Resize se" src="{{show.imageUrl}}" style="display: inline;">
+                <div class="info">
+                  <div class="show-info">
+                    <span class="cam">
+                      <i class="fa fa-video-camera"></i>
+                      <span class="value">{{show.started}}</span>
+                    </span>
+                    <span class="star">
+                      <i class="fa fa-star"></i>
+                      <span class="value">8.5</span>
+                    </span>
+                    <div class="desc">
+                      <div class="title">
+                        {{show.nameEN}}
+                        <br>
+                        {{show.nameRU}}
+                        <br>
+                      </div>
+                      <p>{{show.description}}</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a class="name" href="#/shows/{{show.showId}}">{{show.nameEN}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+    </div>
+  </div>

@@ -35,6 +35,9 @@ var ShowShema = new Schema({
   },
   description: {
     type: String
+  },
+  rating: {
+    type: String
   }
 
 });
