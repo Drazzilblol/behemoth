@@ -1,6 +1,16 @@
 var Show = require('../models/tvShow').Show;
+var passport = require('../../libs/passport');
 module.exports = function (app) {
-  app.get('/api/shows', function (req, res, next) {
+  // Define a middleware function to be used for every secured routes
+  var auth = function(req, res, next){
+    if (!req.isAuthenticated())
+      res.send(401);
+    else
+      next();
+  };
+
+
+  app.get('/api/shows', auth, function (req, res, next) {
     // use mongoose to get all todos in the database
     Show.find(function (err, shows) {
       // if there is an error retrieving, send the error. nothing after res.send(err) will execute
@@ -27,5 +37,18 @@ module.exports = function (app) {
       }
 
     });
+  });
+
+  app.post('/api/users/login', passport.authenticate('local'), function(req, res) {
+    res.send(req.user);
+  });
+
+  app.post('/api/users/logout', function(req, res){
+    req.logOut();
+    res.send(200);
+  });
+
+  app.get('/api/users/loggedin', function(req, res) {
+    res.send(req.isAuthenticated() ? req.user : '0');
   });
 };

@@ -3,20 +3,26 @@ var config = require('./config/config');
 var connect = require('connect');
 var app = express();
 var http = require('http');
-var bodyParser = require('body-parser');
-//var errorHandler = connect.errorHandler();
-require('./server/routes/index')(app);
+var passport = require('./libs/passport');
 
-app.use(bodyParser.urlencoded({extended: 'true'}));            // parse application/x-www-form-urlencoded
-app.use(bodyParser.json());                                     // parse application/json
-app.use(bodyParser.json({type: 'application/vnd.api+json'})); // parse application/vnd.api+json as json
+app.set('view engine', 'ejs');
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.cookieParser());
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(express.session({ secret: 'securedsession' }));
+app.use(passport.initialize()); // Add passport initialization
+app.use(passport.session()); // Add passport initialization
+app.use(app.router);
 app.use(express.static(__dirname + '/client'));
 
+
+require('./server/routes/index')(app);
+
 // will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    //       errorHandler(err, req, res, next);
-  });
+if ('development' == app.get('env')) {
+  app.use(express.errorHandler());
 }
 
 // production error handler

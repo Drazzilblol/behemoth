@@ -3,20 +3,21 @@
 var expect = require('chai').expect;
 //var async = require('async');
 var requireHelper = require('../helpers/require_helper');
-var app = require('./supertest-app');
+var app = require('./supertest-app').app;
+var agent = require('./supertest-app').agent;
 var Show = requireHelper.requireCoverage(__dirname, '../../server/models/tvShow').Show;
 var mongoose = require('mongoose');
 var util = require('../helpers/util');
 var fixtures = require('./fixtures');
+var request = require('superagent');
+var user1 = request.agent();
 
-describe('all routes', function () {
+describe('show routes', function () {
 
   before(function (done) {
     var prepare = function () {
       util.cleanDatabase(function () {
         var stubShows = require('./fixtures/testRecords.json');
-
-
         Show.collection.insert(stubShows, done);
       });
     };
@@ -34,25 +35,31 @@ describe('all routes', function () {
 
   });
 
-  describe('routes \'/\'', function () {
-    it('should return json content data and 200 status', function (done) {
-      app.get('/api/shows')
-        .expect('Content-Type', 'application/json; charset=utf-8')
-        .expect(200, done);
-    });
-  });
-
-  describe('service route', function () {
     it('should return data from with default sort and 200 status', function (done) {
-      app.get('/api/shows')
-        .expect('Content-Type', 'application/json; charset=utf-8')
-        .expect(200)
-        .expect(function (res) {
-          expect(res.body).to.deep.eq(fixtures.from1To5NoSort);
-        })
-        .end(done);
+
+      user1
+        .post('http://localhost:3000/api/users/login')
+        .send({ username: 'admin', password: 'admin' })
+        .end(function(err, res) {
+          console.log(res.headers);
+          user1.get('http://localhost:3000/api/shows')
+           //  .expect('Content-Type', 'application/json; charset=utf-8')
+            // .expect(200)
+            // .expect(function (res) {
+            // expect(res.body).to.deep.eq(fixtures.from1To5NoSort);
+            //   })
+            .end(function(err, res){
+              console.log(res.header);
+            //  expect(res.body).to.deep.eq(fixtures.from1To5NoSort);
+              done();
+            });
+          // user1 will manage its own cookies
+          // res.redirects contains an Array of redirects
+        });
+
+
     });
-  });
+
 /*
     it('should return data from 1 to 5 with sort by year, without dir and 200 status',
       function (done) {

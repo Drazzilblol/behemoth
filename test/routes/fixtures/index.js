@@ -32,8 +32,18 @@ var from1To5NoSort = [
     "genres": []
 
   }];
+var usersNoSort = [
+  {
+    "username": "Drazz",
+    "password": "password"
+  },
+  {
+    "username": "andrew",
+    "password": "12345"
 
+  }]
 
 
 module.exports.from1To5NoSort = from1To5NoSort;
+module.exports.usersNoSort = usersNoSort;
 /* jshint ignore:end */
